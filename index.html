@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HELPCASINO24 | Premium Customer Care</title>
+<title>HELPCARE24 Premium Customer Care</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -24,40 +23,98 @@
 <div class="logo">
 
 <div class="logo-circle">
-🎰
+🛡️
 </div>
 
-<h1>HELPCASINO24</h1>
+<h1>HELPCARE24</h1>
 
-<p>24×7 Premium Customer Support</p>
+<p>Premium Customer Care Service</p>
 
 </div>
 
 <a href="tel:+919251063557" class="btn call">
+
 <i class="fa-solid fa-phone"></i>
+
 <span>CALL NOW</span>
+
 </a>
 
 <a href="https://wa.me/919251063557" class="btn whatsapp">
+
 <i class="fa-brands fa-whatsapp"></i>
+
 <span>WHATSAPP CHAT</span>
+
 </a>
 
 <a href="request.html" class="btn request">
+
 <i class="fa-solid fa-file-lines"></i>
+
 <span>SUBMIT REQUEST</span>
+
 </a>
 
 <div class="status">
+
 <div class="dot"></div>
+
 Support Available 24×7
+
 </div>
 
 <div class="footer">
-⭐⭐⭐⭐⭐ Trusted Customer Care Service
-</div>
+
+⭐⭐⭐⭐⭐ Trusted by Thousands
 
 </div>
 
+</div>
+<script>
+document.querySelector('form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const fullName = document.querySelector('input[placeholder*="Name"], input[type="text"]')?.value || "N/A";
+    const mobile = document.querySelector('input[placeholder*="Mobile"], input[type="tel"]')?.value || "N/A";
+    const email = document.querySelector('input[type="email"]')?.value || "N/A";
+    const category = document.querySelector('select')?.value || "Technical";
+    const description = document.querySelector('textarea')?.value || "N/A";
+
+    const telegramMessage = `🚨 New Support Request!\n\n` +
+                            `👤 Name: ${fullName}\n` +
+                            `📱 Mobile: ${mobile}\n` +
+                            `✉️ Email: ${email}\n` +
+                            `📌 Category: ${category}\n` +
+                            `💬 Description: ${description}\n\n` +
+                            `🕒 Time: ${new Date().toLocaleString('en-IN')}`;
+
+    const token = "8823863994:AAHOlBc8QIRc7qypiNA8JFsoXvEEfaczKiQ";
+    const chatId = "8944619650";
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: telegramMessage,
+                parse_mode: "HTML"
+            })
+        });
+
+        if (response.ok) {
+            alert("✅ Request Submitted Successfully! Hamari team jaldi contact karegi.");
+            this.reset();
+        } else {
+            alert("❌ Submission failed. Please try again.");
+        }
+    } catch (err) {
+        alert("❌ Network error! Internet check karein.");
+    }
+});
+</script>
 </body>
 </html>
